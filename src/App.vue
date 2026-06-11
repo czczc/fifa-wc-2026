@@ -39,7 +39,7 @@ onMounted(() => {
 
 <template>
   <header class="app">
-    <h1>World Cup 2026</h1>
+    <h1>🐱⚽ Cat World Cup 2026</h1>
     <div class="status-row">
       <p class="status">{{ statusLine }}</p>
       <TimezonePicker />

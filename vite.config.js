@@ -9,9 +9,9 @@ export default defineConfig({
     VitePWA({
       registerType: 'autoUpdate',
       manifest: {
-        name: 'World Cup 2026 — Spoiler-Safe Schedule',
-        short_name: 'WC 2026',
-        description: 'WC 2026 schedule with tap-to-reveal results, no spoilers',
+        name: 'Cat World Cup 2026 — Spoiler-Safe Schedule',
+        short_name: 'Cat WC 26',
+        description: 'Spoiler-safe, cat-friendly FIFA World Cup 2026 schedule with tap-to-reveal results',
         theme_color: '#f4eedd',
         background_color: '#f4eedd',
         display: 'standalone',

@@ -1,6 +1,6 @@
-# World Cup 2026 — Spoiler-Safe Schedule
+# Cat World Cup 2026 — Spoiler-Safe Schedule
 
-A personal PWA showing the FIFA World Cup 2026 schedule with tap-to-reveal results. Scores stay hidden until you ask for them; the app installs on a phone and works offline.
+A personal, cat-friendly PWA showing the FIFA World Cup 2026 schedule with tap-to-reveal results. Scores stay hidden until you ask for them; the app installs on a phone, works offline, and every team is a cat.
 
 - **Schedule** — all 104 matches grouped by day in your local timezone, with team/group filters
 - **Reveal buttons** — results are fetched silently on app open but only shown per match when you tap (reveals persist on-device)
