@@ -36,8 +36,8 @@ export function isPlaceholder(name) {
 
 // Cat logos in public/logos/ — only the teams below have one; the rest
 // (and knockout placeholders) render without a logo. The /* flag */ entries
-// are circular national flags (HatScripts/circle-flags) standing in until
-// a matching cat logo is generated.
+// are waving national flags (rendered from flagcdn.com images) standing in
+// until a matching cat logo is generated.
 const LOGO_OVERRIDES = { USA: 'united-states' }
 const LOGOS = new Set([
   'algeria', 'argentina', 'australia', 'austria', 'belgium',
