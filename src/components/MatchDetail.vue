@@ -63,9 +63,11 @@ const query = computed(() =>
   )
 )
 const reportUrl = computed(() => `https://www.google.com/search?q=${query.value}%20match%20report`)
-const highlightsUrl = computed(
-  () => `https://www.youtube.com/results?search_query=${query.value}%20highlights`
-)
+// FOX Sports' World Cup highlights playlist — every title is the spoiler-free
+// "X vs Y Highlights" format, unlike YouTube search results which surface
+// FIFA's score-in-title uploads.
+const highlightsUrl =
+  'https://www.youtube.com/playlist?list=PLSoN6Th-EepMUaxmTobuR_SBwVkdkxdfO'
 </script>
 
 <template>
