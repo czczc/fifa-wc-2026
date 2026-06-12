@@ -87,7 +87,12 @@ const highlightsUrl = computed(
         </div>
       </div>
       <div class="detail-result">
-        <button v-if="played && !revealed" class="reveal" @click="reveal(id)">Show result</button>
+        <template v-if="played && !revealed">
+          <button class="reveal" @click="reveal(id)">Show result</button>
+          <div class="links">
+            <a :href="highlightsUrl" target="_blank" rel="noopener">Highlights ↗</a>
+          </div>
+        </template>
         <template v-else-if="played">
           <div class="big-score">{{ scoreLine(match) }}</div>
           <div v-if="ht" class="ht">{{ ht }}</div>
