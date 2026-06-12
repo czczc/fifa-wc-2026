@@ -81,9 +81,6 @@ export function applyEspnOverlay(base, espn) {
       }
     }
 
-    if (!ev.status?.type?.completed) continue
-    if (match.score) continue // openfootball's curated score wins
-
     const flip = match.team1 === awayName && match.team2 === homeName
     const totals = [Number(home.score), Number(away.score)]
     const goalsHome = []
@@ -97,6 +94,20 @@ export function applyEspnOverlay(base, espn) {
       if (d.ownGoal) g.owngoal = true
       ;(d.team?.id === home.team.id ? goalsHome : goalsAway).push(g)
     }
+
+    // In-progress matches: transient live info for opt-in mid-match peeks,
+    // kept separate from `score` so nothing treats it as a final result.
+    if (ev.status?.type?.state === 'in') {
+      match.live = {
+        ft: flip ? [totals[1], totals[0]] : totals,
+        clock: ev.status.displayClock || '',
+        goals1: flip ? goalsAway : goalsHome,
+        goals2: flip ? goalsHome : goalsAway,
+      }
+      continue
+    }
+    if (!ev.status?.type?.completed) continue
+    if (match.score) continue // openfootball's curated score wins
 
     // ESPN totals include extra time; openfootball splits ft/et. Recover the
     // 90-minute score from scoring-play clocks when they reconcile.

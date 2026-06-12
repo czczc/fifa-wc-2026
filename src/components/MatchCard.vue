@@ -40,6 +40,8 @@ const revealed = computed(() => isRevealed(id.value))
 const win = computed(() => winner(props.match))
 const goals1 = computed(() => goalsText(props.match.goals1))
 const goals2 = computed(() => goalsText(props.match.goals2))
+const liveGoals1 = computed(() => goalsText(props.match.live?.goals1))
+const liveGoals2 = computed(() => goalsText(props.match.live?.goals2))
 const logo1 = computed(() => teamLogo(props.match.team1))
 const logo2 = computed(() => teamLogo(props.match.team2))
 </script>
@@ -66,16 +68,31 @@ const logo2 = computed(() => teamLogo(props.match.team2))
         <span v-if="!compact">{{ match.ground }} · {{ match.group || match.round }}</span>
         <span v-else-if="ko">{{ ko.toLocaleDateString([], { month: 'short', day: 'numeric', timeZone: tz }) }}</span>
       </div>
-      <div v-if="played || (started && !live)" class="result">
-        <button v-if="played && !revealed" class="reveal" @click="reveal(id)">Show result</button>
-        <template v-else-if="played">
-          <div class="score">{{ scoreLine(match) }}</div>
-          <template v-if="!compact">
-            <div v-if="goals1" class="goals">{{ match.team1 }}: {{ goals1 }}</div>
-            <div v-if="goals2" class="goals">{{ match.team2 }}: {{ goals2 }}</div>
+      <div v-if="played || started" class="result">
+        <template v-if="played">
+          <button v-if="!revealed" class="reveal" @click="reveal(id)">Show result</button>
+          <template v-else>
+            <div class="score">{{ scoreLine(match) }}</div>
+            <template v-if="!compact">
+              <div v-if="goals1" class="goals">{{ match.team1 }}: {{ goals1 }}</div>
+              <div v-if="goals2" class="goals">{{ match.team2 }}: {{ goals2 }}</div>
+            </template>
           </template>
         </template>
-        <span v-else class="pending">Finished — awaiting result</span>
+        <template v-else-if="live && match.live">
+          <button v-if="!revealed" class="reveal" @click="reveal(id)">Show live score</button>
+          <template v-else>
+            <div class="score">
+              {{ match.live.ft[0] }}–{{ match.live.ft[1] }}
+              <span class="clock">{{ match.live.clock }}</span>
+            </div>
+            <template v-if="!compact">
+              <div v-if="liveGoals1" class="goals">{{ match.team1 }}: {{ liveGoals1 }}</div>
+              <div v-if="liveGoals2" class="goals">{{ match.team2 }}: {{ liveGoals2 }}</div>
+            </template>
+          </template>
+        </template>
+        <span v-else-if="!live" class="pending">Finished — awaiting result</span>
       </div>
     </div>
     <img v-if="logo2" :src="logo2" class="logo" alt="" />

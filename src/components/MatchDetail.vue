@@ -33,6 +33,8 @@ const revealed = computed(() => isRevealed(id.value))
 const win = computed(() => winner(props.match))
 const goals1 = computed(() => goalsText(props.match.goals1))
 const goals2 = computed(() => goalsText(props.match.goals2))
+const liveGoals1 = computed(() => goalsText(props.match.live?.goals1))
+const liveGoals2 = computed(() => goalsText(props.match.live?.goals2))
 
 const stage = computed(() =>
   props.match.group ? `${props.match.group} · ${props.match.round}` : props.match.round
@@ -95,6 +97,15 @@ const highlightsUrl = computed(
             <a :href="reportUrl" target="_blank" rel="noopener">Match report ↗</a>
             <a :href="highlightsUrl" target="_blank" rel="noopener">Highlights ↗</a>
           </div>
+        </template>
+        <template v-else-if="inPlay && match.live">
+          <button v-if="!revealed" class="reveal" @click="reveal(id)">Show live score</button>
+          <template v-else>
+            <div class="big-score">{{ match.live.ft[0] }}–{{ match.live.ft[1] }}</div>
+            <div class="ht">{{ match.live.clock }} — in play</div>
+            <div v-if="liveGoals1" class="goals">{{ match.team1 }}: {{ liveGoals1 }}</div>
+            <div v-if="liveGoals2" class="goals">{{ match.team2 }}: {{ liveGoals2 }}</div>
+          </template>
         </template>
         <span v-else-if="inPlay" class="pending in-play">● In play</span>
         <span v-else-if="started" class="pending">Finished — awaiting result</span>

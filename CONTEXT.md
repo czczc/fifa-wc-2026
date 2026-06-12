@@ -13,7 +13,7 @@ Any score or result information (final score, scorers, W/D/L, standings points),
 _Avoid_: result (ambiguous — see Flagged ambiguities)
 
 **Reveal**:
-The local, per-match, permanent act of unhiding a Match's score and scorers. Stored on-device (localStorage); never expires, never resets.
+The local, per-match, permanent act of unhiding a Match's score and scorers. While a Match is in play, the same Reveal exposes the live score and clock (an explicit opt-in peek) and stays revealed for the final result. Stored on-device (localStorage); never expires, never resets.
 _Avoid_: load, unlock
 
 **Fetch**:

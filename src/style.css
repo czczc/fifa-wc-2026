@@ -348,6 +348,12 @@ button.reveal {
   text-align: center;
 }
 
+.score .clock {
+  font-size: 13px;
+  color: var(--live);
+  margin-left: 4px;
+}
+
 .goals {
   font-size: 12px;
   color: var(--muted);
