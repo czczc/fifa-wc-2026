@@ -35,20 +35,17 @@ export function isPlaceholder(name) {
 }
 
 // Cat logos in public/logos/ — only the teams below have one; the rest
-// (and knockout placeholders) render without a logo. The /* flag */ entries
-// are waving national flags (rendered from flagcdn.com images) standing in
-// until a matching cat logo is generated.
+// (and knockout placeholders) render without a logo.
 const LOGO_OVERRIDES = { USA: 'united-states' }
 const LOGOS = new Set([
   'algeria', 'argentina', 'australia', 'austria', 'belgium',
-  'bosnia-herzegovina' /* flag */, 'brazil', 'canada',
-  'cape-verde' /* flag */, 'colombia', 'croatia', 'curacao',
-  'czech-republic', 'dr-congo' /* flag */, 'ecuador', 'egypt', 'england',
-  'france', 'germany', 'ghana', 'haiti', 'iran', 'iraq', 'ivory-coast',
-  'japan', 'jordan', 'mexico', 'morocco', 'netherlands', 'new-zealand',
-  'norway', 'panama', 'paraguay', 'portugal', 'qatar', 'saudi-arabia',
-  'scotland', 'senegal', 'south-africa', 'south-korea', 'spain', 'sweden',
-  'switzerland', 'tunisia' /* flag */, 'turkey' /* flag */, 'united-states',
+  'bosnia-herzegovina', 'brazil', 'canada', 'cape-verde', 'colombia',
+  'croatia', 'curacao', 'czech-republic', 'dr-congo', 'ecuador', 'egypt',
+  'england', 'france', 'germany', 'ghana', 'haiti', 'iran', 'iraq',
+  'ivory-coast', 'japan', 'jordan', 'mexico', 'morocco', 'netherlands',
+  'new-zealand', 'norway', 'panama', 'paraguay', 'portugal', 'qatar',
+  'saudi-arabia', 'scotland', 'senegal', 'south-africa', 'south-korea',
+  'spain', 'sweden', 'switzerland', 'tunisia', 'turkey', 'united-states',
   'uruguay', 'uzbekistan',
 ])
 
